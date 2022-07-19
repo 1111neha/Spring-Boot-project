@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Parking Management System</title>
+
+<link rel="stylesheet"
+ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+ crossorigin="anonymous">
+ <style>
+ body{
+         background-image: url('http://merehead.com/blog/wp-content/uploads/gradient-design.jpeg');
+}
+
+ </style>
+ 
+</head>
+<body>
+ <div class="container my-2" >
+ 
+    <h1 align:"center">Welcome To Parking Slot Booking Admin Portal</h1>
+
+<hr>
+<!-- <a th:href = "@{/showNewuserForm}" class="btn btn-primary btn-sm mb-3">Book slot </a> -->
+  <table border="1" class="table table-striped table-responsive-md">
+   <thead>
+    <tr>
+     <th>User First Name</th>
+     <th>User Last Name</th>
+     <th>User Email</th>
+     <th>Slot</th>
+     <th>Actions</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr th:each="user : ${listuser}">
+     <td th:text="${user.firstname}"></td>
+     <td th:text="${user.lastname}"></td>
+     <td th:text="${user.email}"></td>
+     <td th:text="${user.slot}"></td>
+     <td><a th:href="@{/showFormForUpdate/{id}(id=${user.id})}" class="btn btn-warning">Update</a>
+        <a th:href="@{/deleteuser/{id}(id=${user.id})}" class="btn btn-danger">Delete</a></td>
+    </tr>
+   </tbody>
+  </table>
+ </div>
+</body>
+</html>
